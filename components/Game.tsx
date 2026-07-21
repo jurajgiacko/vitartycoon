@@ -1,15 +1,15 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   GameState,
   ChoiceOutcome,
   newGame,
-  eventSequence,
   applyChoice,
   fmtMoney,
   MONTHS,
   TARGET,
+  EVENT_MAP,
 } from '@/lib/engine'
 import { Sprite, SPRITES, PALETTES } from './Sprite'
 import { sfx, initSound, isMuted, toggleMute } from '@/lib/sound'
@@ -35,18 +35,8 @@ function useAnimatedNumber(value: number, ms = 600) {
   return disp
 }
 
-export function Game({
-  seed,
-  playerName,
-  onProgress,
-  onRestart,
-}: {
-  seed: string
-  playerName?: string
-  onProgress?: (s: GameState) => void
-  onRestart?: () => void
-}) {
-  const [state, setState] = useState<GameState>(newGame)
+export function Game({ seed, onRestart }: { seed: string; onRestart?: () => void }) {
+  const [state, setState] = useState<GameState>(() => newGame(seed))
   const [phase, setPhase] = useState<'event' | 'result' | 'end'>('event')
   const [outcome, setOutcome] = useState<ChoiceOutcome | null>(null)
   const [muted, setMuted] = useState(false)
@@ -57,20 +47,20 @@ export function Game({
     // skryté dev zkratky: /play?debug=win|lose|flat
     const dbg = new URLSearchParams(window.location.search).get('debug')
     if (dbg === 'win' || dbg === 'lose' || dbg === 'flat') {
-      setState({
+      setState((s) => ({
+        ...s,
         month: 11,
         valuation: dbg === 'win' ? 10_540_000_000 : dbg === 'flat' ? 6_200_000_000 : 740_000_000,
         happiness: dbg === 'lose' ? 0 : 64,
         alive: dbg !== 'lose',
         finished: true,
         won: dbg === 'win',
-      })
+      }))
       setPhase('end')
     }
   }, [])
 
-  const events = useMemo(() => eventSequence(seed), [seed])
-  const ev = events[state.month]
+  const ev = EVENT_MAP[state.currentEventId]
   const dispVal = useAnimatedNumber(state.valuation)
 
   function choose(i: number) {
@@ -80,7 +70,6 @@ export function Game({
     setPhase('result')
     if (out.valPct >= 0) sfx.good()
     else sfx.bad()
-    onProgress?.(out.state)
   }
 
   function next() {
@@ -96,20 +85,14 @@ export function Game({
 
   function restart() {
     sfx.click()
-    if (onRestart) {
-      onRestart()
-    }
-    setState(newGame())
-    setOutcome(null)
-    setPhase('event')
+    onRestart?.()
   }
 
   async function share() {
     sfx.click()
-    const name = playerName ? `${playerName} dotáhl(a)` : 'Dotáhl(a) jsem'
     const text = state.won
-      ? `${name} VITAR Group na ${fmtMoney(state.valuation)} — JEDNOROŽEC! 🦄 Zvládneš to taky?`
-      : `${name} VITAR Group na ${fmtMoney(state.valuation)}. Zvládneš 10 miliard?`
+      ? `Dotáhl(a) jsem VITAR Group na ${fmtMoney(state.valuation)} — JEDNOROŽEC! 🦄 Zvládneš to taky?`
+      : `Dotáhl(a) jsem VITAR Group na ${fmtMoney(state.valuation)}. Zvládneš 10 miliard?`
     const url = typeof window !== 'undefined' ? window.location.origin : ''
     try {
       if (navigator.share) await navigator.share({ text: `${text} ${url}` })
@@ -170,6 +153,7 @@ export function Game({
           <div className="card-month">
             {MONTHS[state.month]} · {state.month + 1}/12
           </div>
+          {ev.followup && <div className="card-followup">! Důsledek vašeho rozhodnutí !</div>}
           <div className="card-icon">
             <Sprite map={SPRITES[ev.icon] ?? SPRITES.star} palette={pal} px={7} />
           </div>
@@ -220,7 +204,7 @@ export function Game({
             {outcome.burnout && (
               <p className="card-note">! Tým je vyhořelý — růst jen poloviční !</p>
             )}
-            {outcome.onFire && <p className="card-note note-good">Tým v laufu! Bonus +15 % k růstu.</p>}
+            {outcome.onFire && <p className="card-note note-good">Tým v laufu! Bonus +25 % k růstu.</p>}
             <p className="card-hap">
               Nálada týmu {outcome.hapDelta >= 0 ? '+' : ''}
               {outcome.hapDelta}

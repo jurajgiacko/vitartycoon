@@ -9,6 +9,8 @@ export type Choice = {
   hap: number
   // text výsledku, {val} se nahradí skutečnou změnou
   result: string
+  // volba nastaví vlajku — za 2–3 měsíce se vrátí navazující událost (FOLLOWUPS)
+  flag?: string
 }
 
 export type GameEvent = {
@@ -16,6 +18,7 @@ export type GameEvent = {
   icon: string // klíč do SPRITES
   text: string
   choices: Choice[]
+  followup?: boolean // důsledek dřívějšího rozhodnutí (zobrazí se s výstrahou)
 }
 
 export const EVENTS: GameEvent[] = [
@@ -24,7 +27,7 @@ export const EVENTS: GameEvent[] = [
     icon: 'virus',
     text: 'Chřipková sezóna! Celé Česko smrká a Maxi Vita Vitamin C mizí z regálů.',
     choices: [
-      { label: 'Přesčasy! Vyrábíme nonstop', valMin: 18, valMax: 35, hap: -12, result: 'Linky jely 24/7. Prodeje trhaly rekordy, tým sotva stojí na nohou. {val}' },
+      { label: 'Přesčasy! Vyrábíme nonstop', valMin: 18, valMax: 35, hap: -12, flag: 'crunch', result: 'Linky jely 24/7. Prodeje trhaly rekordy, tým sotva stojí na nohou. {val}' },
       { label: 'Zdražíme o 20 %', valMin: 8, valMax: 18, hap: -2, result: 'Marže krásná, lékárníci prskali, ale zaplatili. {val}' },
     ],
   },
@@ -69,8 +72,8 @@ export const EVENTS: GameEvent[] = [
     icon: 'chart',
     text: 'Naševitaminy.cz spadly přesně ve špičce chřipkové kampaně. IT říká: „Buď záplata, nebo nový systém.“',
     choices: [
-      { label: 'Přepsat celý systém hned', valMin: -5, valMax: 25, hap: -6, result: 'Měsíc bolesti, ale nový e-shop sviští. {val}' },
-      { label: 'Záplatovat a modlit se', valMin: -10, valMax: 8, hap: -2, result: 'Drží to. Zatím. Izolepa je vidět. {val}' },
+      { label: 'Přepsat celý systém hned', valMin: -5, valMax: 25, hap: -6, flag: 'eshop_rebuild', result: 'Měsíc bolesti, ale nový e-shop sviští. {val}' },
+      { label: 'Záplatovat a modlit se', valMin: -10, valMax: 8, hap: -2, flag: 'eshop_patch', result: 'Drží to. Zatím. Izolepa je vidět. {val}' },
     ],
   },
   {
@@ -78,7 +81,7 @@ export const EVENTS: GameEvent[] = [
     icon: 'flag',
     text: 'Distributor nabízí expanzi na Balkán. Velký trh, divoké prostředí.',
     choices: [
-      { label: 'Jdeme do toho!', valMin: 8, valMax: 45, hap: -5, result: 'Bělehrad, Sofie, Záhřeb. Papírování peklo, čísla nebe. {val}' },
+      { label: 'Jdeme do toho!', valMin: 8, valMax: 45, hap: -5, flag: 'balkan_go', result: 'Bělehrad, Sofie, Záhřeb. Papírování peklo, čísla nebe. {val}' },
       { label: 'Nejdřív pořádně dobýt Slovensko', valMin: 5, valMax: 15, hap: 3, result: 'Krok za krokem. Slovensko roste pěkně. {val}' },
     ],
   },
@@ -231,7 +234,7 @@ export const EVENTS: GameEvent[] = [
     icon: 'factory',
     text: 'Německý drogistický řetězec chce, abyste vyráběli jeho privátní značku. Obří objemy, jejich logo.',
     choices: [
-      { label: 'Brát! Tišnov pojede naplno', valMin: 12, valMax: 38, hap: -6, result: 'Whitelabel export jede. Linky hučí, marže menší, ale objemy obří. {val}' },
+      { label: 'Brát! Tišnov pojede naplno', valMin: 12, valMax: 38, hap: -6, flag: 'wl_full', result: 'Whitelabel export jede. Linky hučí, marže menší, ale objemy obří. {val}' },
       { label: 'Ne, budujeme vlastní značky', valMin: 0, valMax: 8, hap: 4, result: 'Maxi Vita zůstává hvězdou regálu. Kapacita linek ale zeje. {val}' },
     ],
   },
@@ -240,7 +243,7 @@ export const EVENTS: GameEvent[] = [
     icon: 'box',
     text: 'Polský řetězec lékáren poptává privátní řadu vitaminů. Chce ale exkluzivitu pro Polsko.',
     choices: [
-      { label: 'Podepsat exkluzivitu', valMin: 8, valMax: 30, hap: -4, result: 'Kontrakt na tři roky. Tišnov nabírá druhou směnu. {val}' },
+      { label: 'Podepsat exkluzivitu', valMin: 8, valMax: 30, hap: -4, flag: 'wl_exclusive', result: 'Kontrakt na tři roky. Tišnov nabírá druhou směnu. {val}' },
       { label: 'Jen bez exkluzivity', valMin: -5, valMax: 12, hap: 2, result: 'Dohoda menší, ale dveře do Polska zůstávají otevřené všem značkám. {val}' },
     ],
   },
@@ -267,8 +270,8 @@ export const EVENTS: GameEvent[] = [
     icon: 'pill',
     text: 'Licence Capri-Sun se prodlužuje. Licenční poplatky ale rostou o 30 %.',
     choices: [
-      { label: 'Prodloužit, značka táhne', valMin: 5, valMax: 18, hap: 0, result: 'Kapříci zůstávají v portfoliu. Děti jásají. {val}' },
-      { label: 'Pustit licenci, tlačit OvoCé', valMin: -8, valMax: 15, hap: 2, result: 'Vlastní značka dostává šanci. Risk, ale marže je celá vaše. {val}' },
+      { label: 'Prodloužit, značka táhne', valMin: 5, valMax: 18, hap: 0, flag: 'caprisun_keep', result: 'Kapříci zůstávají v portfoliu. Děti jásají. {val}' },
+      { label: 'Pustit licenci, tlačit OvoCé', valMin: -8, valMax: 15, hap: 2, flag: 'caprisun_drop', result: 'Vlastní značka dostává šanci. Risk, ale marže je celá vaše. {val}' },
     ],
   },
   {
@@ -308,3 +311,87 @@ export const EVENTS: GameEvent[] = [
     ],
   },
 ]
+
+// Navazující události — vracejí se 2–3 měsíce po rozhodnutí, které nastavilo flag.
+export const FOLLOWUPS: Record<string, GameEvent> = {
+  crunch: {
+    id: 'fu_crunch',
+    icon: 'heart',
+    followup: true,
+    text: 'Účet za nonstop výrobu: tři klíčoví lidé z linky v Tišnově dali výpověď.',
+    choices: [
+      { label: 'Protinabídky a klidnější směny', valMin: -5, valMax: 2, hap: 8, result: 'Dva zůstali. A výroba dostala lidštější tempo. {val}' },
+      { label: 'Nahradíme je, jede se dál', valMin: -12, valMax: -2, hap: -6, result: 'Nábor vázne, zaučení trvá. Linka jede na půl plynu. {val}' },
+    ],
+  },
+  eshop_patch: {
+    id: 'fu_eshop_patch',
+    icon: 'chart',
+    followup: true,
+    text: 'Izolepa povolila. Naševitaminy.cz ležely tři dny a Heureka je plná jednohvězdiček.',
+    choices: [
+      { label: 'Nový systém, teď už bez debat', valMin: -10, valMax: -2, hap: -5, result: 'Draze a pod tlakem, ale konečně pořádně. {val}' },
+      { label: 'Další záplata', valMin: -18, valMax: 0, hap: -8, result: 'IT tým mlčky ukazuje na hořící server. {val}' },
+    ],
+  },
+  eshop_rebuild: {
+    id: 'fu_eshop_rebuild',
+    icon: 'chart',
+    followup: true,
+    text: 'Nový e-shop sviští! Konverze +40 %. Marketing chce velkou kampaň na Naševitaminy.cz.',
+    choices: [
+      { label: 'Kampaň! Teď, nebo nikdy', valMin: 10, valMax: 30, hap: 0, result: 'Investice do nového systému se vrací i s úroky. {val}' },
+      { label: 'Nechat růst organicky', valMin: 3, valMax: 10, hap: 2, result: 'Roste to samo. Pomalu, ale jistě. {val}' },
+    ],
+  },
+  balkan_go: {
+    id: 'fu_balkan',
+    icon: 'flag',
+    followup: true,
+    text: 'Balkánský distributor přestal platit. Dluží faktury za tři měsíce dodávek.',
+    choices: [
+      { label: 'Právníci a stopka dodávek', valMin: -8, valMax: 5, hap: -2, result: 'Část peněz venku, vztahy na bodu mrazu. Poučení drahé, ale poučení. {val}' },
+      { label: 'Vydržet, trh je perspektivní', valMin: -15, valMax: 15, hap: -3, result: 'Hazard. Někdy vyjde, někdy máte drahou pohledávku. {val}' },
+    ],
+  },
+  wl_full: {
+    id: 'fu_wl_full',
+    icon: 'factory',
+    followup: true,
+    text: 'Tišnov jede na 110 % pro whitelabel. Na vlastní značky nezbývá kapacita — Maxi Vita chybí v regálech.',
+    choices: [
+      { label: 'Investovat do rozšíření výroby', valMin: -5, valMax: 20, hap: -5, result: 'Nová hala se staví. Chvíli to bolí, kapacita bude dvojnásobná. {val}' },
+      { label: 'Omezit whitelabel kontrakt', valMin: -8, valMax: 8, hap: 3, result: 'Němci skřípou zuby, vlastní značky se vrací do regálů. {val}' },
+    ],
+  },
+  wl_exclusive: {
+    id: 'fu_wl_exclusive',
+    icon: 'box',
+    followup: true,
+    text: 'Německý řetězec chce stejnou privátní řadu. Jenže polská exkluzivita to zakazuje.',
+    choices: [
+      { label: 'Vykoupit se z exkluzivity', valMin: -10, valMax: 12, hap: -3, result: 'Drahý podpis, ale německý trh je otevřený. {val}' },
+      { label: 'Němce odmítnout, slovo platí', valMin: -3, valMax: 6, hap: 4, result: 'Poláci si vaší férovosti cení. Objednávají víc. {val}' },
+    ],
+  },
+  caprisun_keep: {
+    id: 'fu_caprisun_keep',
+    icon: 'pill',
+    followup: true,
+    text: 'Capri-Sun letí! Licenční sázka vyšla, léto trhá rekordy prodejů.',
+    choices: [
+      { label: 'Rozšířit řadu o nové příchutě', valMin: 8, valMax: 25, hap: 2, result: 'Nové příchutě mizí z regálů. Licence se platí sama. {val}' },
+      { label: 'Držet současnou nabídku', valMin: 3, valMax: 10, hap: 0, result: 'Jistota je jistota. {val}' },
+    ],
+  },
+  caprisun_drop: {
+    id: 'fu_caprisun_drop',
+    icon: 'pill',
+    followup: true,
+    text: 'OvoCé bez kapříků bojuje. Obchodníci hlásí: děti chtějí značku, kterou znají z televize.',
+    choices: [
+      { label: 'Velká kampaň na OvoCé', valMin: -5, valMax: 25, hap: 0, result: 'Buď vybudujete vlastní legendu, nebo draze zaplatíte školné. {val}' },
+      { label: 'Vrátit se k jednání o licenci', valMin: -5, valMax: 8, hap: -3, result: 'Licence zpět, ale za horších podmínek. Aspoň že děti jásají. {val}' },
+    ],
+  },
+}

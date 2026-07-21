@@ -1,14 +1,20 @@
-import { EVENTS, GameEvent } from './events'
+import { EVENTS, FOLLOWUPS, GameEvent } from './events'
 
 export const START_VALUATION = 1_000_000_000 // 1 mld Kč
 export const TARGET = 10_000_000_000 // 10 mld Kč
 export const START_HAPPINESS = 60
-export const GROWTH_BOOST = 1.25
+export const GROWTH_BOOST = 1.3
 
 export const MONTHS = [
   'Leden', 'Únor', 'Březen', 'Duben', 'Květen', 'Červen',
   'Červenec', 'Srpen', 'Září', 'Říjen', 'Listopad', 'Prosinec',
 ]
+
+// všechny události (základní i navazující) podle id
+export const EVENT_MAP: Record<string, GameEvent> = Object.fromEntries([
+  ...EVENTS.map((e) => [e.id, e]),
+  ...Object.values(FOLLOWUPS).map((e) => [e.id, e]),
+])
 
 export type GameState = {
   month: number // 0–11, index právě hraného měsíce
@@ -17,17 +23,9 @@ export type GameState = {
   alive: boolean
   finished: boolean
   won: boolean
-}
-
-export function newGame(): GameState {
-  return {
-    month: 0,
-    valuation: START_VALUATION,
-    happiness: START_HAPPINESS,
-    alive: true,
-    finished: false,
-    won: false,
-  }
+  currentEventId: string
+  baseIndex: number // kolik základních událostí už bylo použito
+  pending: { id: string; due: number }[] // naplánované navazující události
 }
 
 // --- seedovaná náhoda (mulberry32) ---
@@ -52,7 +50,7 @@ export function mulberry32(seed: number): () => number {
   }
 }
 
-// 12 událostí pro daný seed — stejný seed => stejná hra (multiplayer)
+// zamíchaný celý základní pool pro daný seed — stejný seed => stejná hra
 export function eventSequence(seed: string): GameEvent[] {
   const rng = mulberry32(hashSeed(seed))
   const pool = [...EVENTS]
@@ -60,7 +58,21 @@ export function eventSequence(seed: string): GameEvent[] {
     const j = Math.floor(rng() * (i + 1))
     ;[pool[i], pool[j]] = [pool[j], pool[i]]
   }
-  return pool.slice(0, 12)
+  return pool
+}
+
+export function newGame(seed: string): GameState {
+  return {
+    month: 0,
+    valuation: START_VALUATION,
+    happiness: START_HAPPINESS,
+    alive: true,
+    finished: false,
+    won: false,
+    currentEventId: eventSequence(seed)[0].id,
+    baseIndex: 1,
+    pending: [],
+  }
 }
 
 export type ChoiceOutcome = {
@@ -72,8 +84,7 @@ export type ChoiceOutcome = {
   onFire: boolean // růst byl posílen náladou
 }
 
-// Výsledek volby je seedovaný podle (seed, měsíc, volba) —
-// všichni hráči v místnosti, kteří zvolí stejně, dostanou stejný výsledek.
+// Výsledek volby je seedovaný podle (seed, měsíc, volba) — deterministický.
 export function applyChoice(
   seed: string,
   state: GameState,
@@ -105,6 +116,29 @@ export function applyChoice(
   const finished = !alive || nextMonth >= 12
   const won = finished && alive && valuation >= TARGET
 
+  // naplánovat navazující událost (o 2–3 měsíce později)
+  const pending = [...state.pending]
+  if (choice.flag && FOLLOWUPS[choice.flag]) {
+    const frng = mulberry32(hashSeed(`${seed}:fu:${choice.flag}`))
+    const due = state.month + 2 + Math.floor(frng() * 2)
+    if (due <= 11) pending.push({ id: FOLLOWUPS[choice.flag].id, due })
+  }
+
+  // určit událost dalšího měsíce: splatný followup má přednost před základním poolem
+  let currentEventId = state.currentEventId
+  let baseIndex = state.baseIndex
+  if (!finished) {
+    pending.sort((a, b) => a.due - b.due)
+    const dueIdx = pending.findIndex((p) => p.due <= nextMonth)
+    if (dueIdx >= 0) {
+      currentEventId = pending[dueIdx].id
+      pending.splice(dueIdx, 1)
+    } else {
+      currentEventId = eventSequence(seed)[baseIndex].id
+      baseIndex++
+    }
+  }
+
   const valText =
     pct >= 0 ? `Hodnota firmy +${pct.toLocaleString('cs-CZ')} %.` : `Hodnota firmy ${pct.toLocaleString('cs-CZ')} %.`
 
@@ -116,6 +150,9 @@ export function applyChoice(
       alive,
       finished,
       won,
+      currentEventId,
+      baseIndex,
+      pending,
     },
     valPct: pct,
     hapDelta: choice.hap,
@@ -135,11 +172,4 @@ export function fmtMoney(v: number): string {
 
 export function randomSeed(): string {
   return Math.random().toString(36).slice(2, 10)
-}
-
-export function roomCode(): string {
-  const chars = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'
-  let out = ''
-  for (let i = 0; i < 4; i++) out += chars[Math.floor(Math.random() * chars.length)]
-  return out
 }

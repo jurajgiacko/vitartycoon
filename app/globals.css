@@ -408,6 +408,17 @@ h1.logo {
   50% { transform: scale(1.25) rotate(-6deg); }
 }
 
+.card-followup {
+  font-family: var(--font-pixel), monospace;
+  font-size: 9px;
+  color: #fff;
+  background: var(--red);
+  border: 3px solid var(--ink);
+  padding: 8px;
+  text-align: center;
+  animation: blink 1.2s steps(2) infinite;
+}
+
 .card-month {
   font-family: var(--font-pixel), monospace;
   font-size: 9px;
