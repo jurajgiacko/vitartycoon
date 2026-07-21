@@ -22,7 +22,7 @@ export const EVENTS: GameEvent[] = [
   {
     id: 'flu',
     icon: 'virus',
-    text: 'Chřipková sezóna! Celé Česko smrká a poptávka po vitamínu C letí nahoru.',
+    text: 'Chřipková sezóna! Celé Česko smrká a Maxi Vita Vitamin C mizí z regálů.',
     choices: [
       { label: 'Přesčasy! Vyrábíme nonstop', valMin: 18, valMax: 35, hap: -12, result: 'Linky jely 24/7. Prodeje trhaly rekordy, tým sotva stojí na nohou. {val}' },
       { label: 'Zdražíme o 20 %', valMin: 8, valMax: 18, hap: -2, result: 'Marže krásná, lékárníci prskali, ale zaplatili. {val}' },
@@ -49,7 +49,7 @@ export const EVENTS: GameEvent[] = [
   {
     id: 'gummies',
     icon: 'star',
-    text: 'Vývoj přinesl prototyp kolagenových gumídků. Trh po nich šílí.',
+    text: 'Vývoj přinesl prototyp: Maxi Vita Beauty mořský kolagen v gumídcích. Trh po kolagenu šílí.',
     choices: [
       { label: 'Spustit hned, doladíme za pochodu', valMin: 12, valMax: 40, hap: -8, result: 'Launch za tři týdny. Gumídci mizí z regálů. {val}' },
       { label: 'Půl roku pořádně testovat', valMin: 0, valMax: 8, hap: 6, result: 'Kvalita především. Konkurence zatím taky nespí. {val}' },
@@ -67,7 +67,7 @@ export const EVENTS: GameEvent[] = [
   {
     id: 'eshop',
     icon: 'chart',
-    text: 'E-shop spadl přesně ve špičce chřipkové kampaně. IT říká: „Buď záplata, nebo nový systém.“',
+    text: 'Naševitaminy.cz spadly přesně ve špičce chřipkové kampaně. IT říká: „Buď záplata, nebo nový systém.“',
     choices: [
       { label: 'Přepsat celý systém hned', valMin: -5, valMax: 25, hap: -6, result: 'Měsíc bolesti, ale nový e-shop sviští. {val}' },
       { label: 'Záplatovat a modlit se', valMin: -10, valMax: 8, hap: -2, result: 'Drží to. Zatím. Izolepa je vidět. {val}' },
@@ -202,7 +202,7 @@ export const EVENTS: GameEvent[] = [
   {
     id: 'retro',
     icon: 'gift',
-    text: 'Ve skladu se našla originální receptura šumivého nápoje z 90. let.',
+    text: 'Ve skladu v Tišnově se našla originální receptura šumivého nápoje z 90. let.',
     choices: [
       { label: 'Limitovaná retro edice!', valMin: 10, valMax: 35, hap: 8, result: 'Nostalgie prodává! Vyprodáno za týden. {val}' },
       { label: 'Nostalgie neprodává', valMin: 0, valMax: 5, hap: -3, result: 'Možná příště. Receptura se vrací do šuplíku. {val}' },
@@ -224,6 +224,78 @@ export const EVENTS: GameEvent[] = [
     choices: [
       { label: 'Velký stánek, plná paráda', valMin: 8, valMax: 28, hap: -4, result: 'Tři nové kontrakty a plný diář schůzek. {val}' },
       { label: 'Jen letáky a vizitky', valMin: 0, valMax: 6, hap: 0, result: 'Pár kontaktů. Velké ryby braly velké stánky. {val}' },
+    ],
+  },
+  {
+    id: 'whitelabel',
+    icon: 'factory',
+    text: 'Německý drogistický řetězec chce, abyste vyráběli jeho privátní značku. Obří objemy, jejich logo.',
+    choices: [
+      { label: 'Brát! Tišnov pojede naplno', valMin: 12, valMax: 38, hap: -6, result: 'Whitelabel export jede. Linky hučí, marže menší, ale objemy obří. {val}' },
+      { label: 'Ne, budujeme vlastní značky', valMin: 0, valMax: 8, hap: 4, result: 'Maxi Vita zůstává hvězdou regálu. Kapacita linek ale zeje. {val}' },
+    ],
+  },
+  {
+    id: 'whitelabel2',
+    icon: 'box',
+    text: 'Polský řetězec lékáren poptává privátní řadu vitaminů. Chce ale exkluzivitu pro Polsko.',
+    choices: [
+      { label: 'Podepsat exkluzivitu', valMin: 8, valMax: 30, hap: -4, result: 'Kontrakt na tři roky. Tišnov nabírá druhou směnu. {val}' },
+      { label: 'Jen bez exkluzivity', valMin: -5, valMax: 12, hap: 2, result: 'Dohoda menší, ale dveře do Polska zůstávají otevřené všem značkám. {val}' },
+    ],
+  },
+  {
+    id: 'd2c',
+    icon: 'chart',
+    text: 'Naševitaminy.cz rostou. Marketing chce přesunout rozpočet z řetězců do vlastního e-shopu.',
+    choices: [
+      { label: 'D2C plný plyn, marže je naše', valMin: 8, valMax: 30, hap: -4, result: 'Přímý prodej roste, data o zákaznících k nezaplacení. Nákupčí řetězců prskají. {val}' },
+      { label: 'Neriskovat vztahy s řetězci', valMin: 2, valMax: 10, hap: 2, result: 'Klid v obchodních vztazích. E-shop roste pomaleji. {val}' },
+    ],
+  },
+  {
+    id: 'allegro',
+    icon: 'flag',
+    text: 'Allegro v Polsku otevírá kategorii zdraví. Šance dostat e-commerce za hranice.',
+    choices: [
+      { label: 'Nalistovat celé portfolio', valMin: 10, valMax: 35, hap: -5, result: 'Polsko objednává. Logistika sténá, čísla rostou. {val}' },
+      { label: 'Jen Energit a Maxi Vita', valMin: 5, valMax: 18, hap: 0, result: 'Best-sellery se chytily. Zbytek portfolia počká. {val}' },
+    ],
+  },
+  {
+    id: 'caprisun',
+    icon: 'pill',
+    text: 'Licence Capri-Sun se prodlužuje. Licenční poplatky ale rostou o 30 %.',
+    choices: [
+      { label: 'Prodloužit, značka táhne', valMin: 5, valMax: 18, hap: 0, result: 'Kapříci zůstávají v portfoliu. Děti jásají. {val}' },
+      { label: 'Pustit licenci, tlačit OvoCé', valMin: -8, valMax: 15, hap: 2, result: 'Vlastní značka dostává šanci. Risk, ale marže je celá vaše. {val}' },
+    ],
+  },
+  {
+    id: 'predator',
+    icon: 'virus',
+    text: 'Komáří kalamita na jižní Moravě! Poptávka po repelentu Predator trhá rekordy.',
+    choices: [
+      { label: 'Přehodit kapacity na Predator', valMin: 10, valMax: 28, hap: -6, result: 'Predator vyprodán do posledního kusu. Komáři v šoku. {val}' },
+      { label: 'Nenechat se rozptylovat', valMin: 0, valMax: 6, hap: 0, result: 'Sezónní vlna projela kolem. Vitaminy jedou dál. {val}' },
+    ],
+  },
+  {
+    id: 'award',
+    icon: 'trophy',
+    text: 'Maxi Vita Essentials získala ocenění Volba spotřebitelů — Nejlepší novinka roku!',
+    choices: [
+      { label: 'Opřít o to celou kampaň', valMin: 10, valMax: 25, hap: 6, result: 'Logo ocenění na každém obalu a billboardu. Důvěra prodává. {val}' },
+      { label: 'Jen tisková zpráva', valMin: 3, valMax: 10, hap: 3, result: 'Skromnost šlechtí. Ale konkurence by to vytroubila víc. {val}' },
+    ],
+  },
+  {
+    id: 'vyprostovak',
+    icon: 'pill',
+    text: 'Blíží se večírková sezóna. Řetězce chtějí dvojnásobnou zásobu legendárního Vyprošťováku.',
+    choices: [
+      { label: 'Navařit dvojnásob', valMin: 8, valMax: 22, hap: -3, result: 'Vyprošťovák zachraňuje rána po celé republice. {val}' },
+      { label: 'Držet běžné objemy', valMin: 0, valMax: 6, hap: 0, result: 'Vyprodáno už 27. prosince. Škoda. {val}' },
     ],
   },
   {
