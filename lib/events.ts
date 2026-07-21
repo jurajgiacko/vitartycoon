@@ -21,7 +21,7 @@ export type GameEvent = {
 export const EVENTS: GameEvent[] = [
   {
     id: 'flu',
-    icon: 'pill',
+    icon: 'virus',
     text: 'Chřipková sezóna! Celé Česko smrká a poptávka po vitamínu C letí nahoru.',
     choices: [
       { label: 'Přesčasy! Vyrábíme nonstop', valMin: 18, valMax: 35, hap: -12, result: 'Linky jely 24/7. Prodeje trhaly rekordy, tým sotva stojí na nohou. {val}' },
@@ -120,7 +120,7 @@ export const EVENTS: GameEvent[] = [
   },
   {
     id: 'xmas',
-    icon: 'mega',
+    icon: 'tv',
     text: 'Blíží se vánoční sezóna. Agentura navrhla kampaň „Zdraví pod stromeček“.',
     choices: [
       { label: 'Billboardy po celé republice', valMin: 15, valMax: 35, hap: -3, result: 'Vitar je vidět z každé dálnice. Prodeje jedou. {val}' },
@@ -147,7 +147,7 @@ export const EVENTS: GameEvent[] = [
   },
   {
     id: 'amazon',
-    icon: 'box',
+    icon: 'truck',
     text: 'Amazon.de nabízí listing v Německu. Obří trh, brutální logistika.',
     choices: [
       { label: 'Go! Deutschland, wir kommen!', valMin: 10, valMax: 40, hap: -6, result: 'Ordnung zvládnut. Německo objednává. {val}' },
@@ -174,7 +174,7 @@ export const EVENTS: GameEvent[] = [
   },
   {
     id: 'hockey',
-    icon: 'star',
+    icon: 'hockey',
     text: 'Hokejová extraliga hledá partnera. Logo na ledě, miliony diváků.',
     choices: [
       { label: 'Logo na led!', valMin: 12, valMax: 30, hap: 4, result: 'Celá hospoda ví, co je Vitar. {val}' },
@@ -201,7 +201,7 @@ export const EVENTS: GameEvent[] = [
   },
   {
     id: 'retro',
-    icon: 'star',
+    icon: 'gift',
     text: 'Ve skladu se našla originální receptura šumivého nápoje z 90. let.',
     choices: [
       { label: 'Limitovaná retro edice!', valMin: 10, valMax: 35, hap: 8, result: 'Nostalgie prodává! Vyprodáno za týden. {val}' },

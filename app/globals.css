@@ -70,15 +70,33 @@ body {
   height: 72px;
   z-index: -1;
   pointer-events: none;
-  background:
-    /* Baťův mrakodrap :) */
-    linear-gradient(#2e3f57, #2e3f57) 8% 0 / 44px 72px no-repeat,
-    linear-gradient(#243248, #243248) calc(8% + 6px) 8px / 8px 60px no-repeat,
-    linear-gradient(#243248, #243248) calc(8% + 20px) 8px / 8px 60px no-repeat,
-    linear-gradient(#2e3f57, #2e3f57) 28% 28px / 60px 44px no-repeat,
-    linear-gradient(#2e3f57, #2e3f57) 46% 16px / 36px 56px no-repeat,
-    linear-gradient(#2e3f57, #2e3f57) 62% 34px / 80px 38px no-repeat,
-    linear-gradient(#2e3f57, #2e3f57) 85% 22px / 40px 50px no-repeat;
+  display: flex;
+  overflow: hidden;
+}
+
+.sun {
+  position: absolute;
+  top: 26px;
+  right: 7%;
+  animation: sunpulse 4s steps(2) infinite;
+}
+
+@keyframes sunpulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+.bird {
+  position: absolute;
+  animation: fly linear infinite;
+}
+
+.bird-1 { top: 16%; animation-duration: 34s; }
+.bird-2 { top: 30%; animation-duration: 47s; animation-delay: -18s; }
+
+@keyframes fly {
+  from { right: -40px; }
+  to { right: 110%; }
 }
 
 /* --- obecné --- */
@@ -355,6 +373,119 @@ h1.logo {
 @keyframes floatup {
   from { transform: translateY(14px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+
+.goalbar,
+.hapbar {
+  width: 100%;
+  max-width: 120px;
+  height: 8px;
+  border: 2px solid var(--ink);
+  background: #26262e;
+}
+
+.hapbar {
+  width: 60px;
+}
+
+.goalbar-fill {
+  height: 100%;
+  background: var(--yellow);
+  transition: width 0.6s steps(8);
+}
+
+.hapbar-fill {
+  height: 100%;
+  transition: width 0.4s steps(6);
+}
+
+.face-bump {
+  animation: bump 0.35s steps(4);
+}
+
+@keyframes bump {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25) rotate(-6deg); }
+}
+
+.card-month {
+  font-family: var(--font-pixel), monospace;
+  font-size: 9px;
+  color: #bdbdc7;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 3;
+}
+
+.p {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+}
+
+.p-up {
+  bottom: 20%;
+  animation: rise 0.9s steps(9) forwards;
+}
+
+.p-down {
+  top: 15%;
+  animation: fall 0.9s steps(9) forwards;
+}
+
+@keyframes rise {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-110px); opacity: 0; }
+}
+
+@keyframes fall {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(110px); opacity: 0; }
+}
+
+.confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.c {
+  position: absolute;
+  top: -14px;
+  width: 10px;
+  height: 10px;
+  animation: drop linear infinite;
+}
+
+@keyframes drop {
+  0% { transform: translateY(-20px) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(540deg); }
+}
+
+.card-icon {
+  position: relative;
+}
+
+.sparkle {
+  position: absolute;
+  animation: blink 1s steps(2) infinite;
+}
+
+.sparkle-1 { top: 4px; left: 6px; }
+.sparkle-2 { bottom: 8px; right: 6px; animation-delay: 0.5s; }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.15; }
 }
 
 .mute {

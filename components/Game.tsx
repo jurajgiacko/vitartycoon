@@ -130,10 +130,28 @@ export function Game({
       <header className="hud">
         <div className="hud-item">
           <div className="hud-value">{fmtMoney(dispVal)}</div>
-          <div className="hud-label">Hodnota</div>
+          <div className="goalbar">
+            <div
+              className="goalbar-fill"
+              style={{ width: `${Math.min(100, (state.valuation / TARGET) * 100)}%` }}
+            />
+          </div>
+          <div className="hud-label">Cíl 10 mld</div>
         </div>
         <div className="hud-item hud-center">
-          <Sprite map={SPRITES[face]} palette={pal} px={4} />
+          <div className="face-bump" key={state.happiness}>
+            <Sprite map={SPRITES[face]} palette={pal} px={4} />
+          </div>
+          <div className="hapbar">
+            <div
+              className="hapbar-fill"
+              style={{
+                width: `${state.happiness}%`,
+                background:
+                  state.happiness >= 60 ? 'var(--green)' : state.happiness >= 35 ? 'var(--yellow)' : 'var(--red)',
+              }}
+            />
+          </div>
           <div className="hud-label">Nálada</div>
         </div>
         <div className="hud-item hud-right">
@@ -149,6 +167,9 @@ export function Game({
 
       {phase === 'event' && ev && (
         <main className="card" key={`ev-${state.month}`}>
+          <div className="card-month">
+            {MONTHS[state.month]} · {state.month + 1}/12
+          </div>
           <div className="card-icon">
             <Sprite map={SPRITES[ev.icon] ?? SPRITES.star} palette={pal} px={7} />
           </div>
@@ -174,6 +195,26 @@ export function Game({
             {outcome.valPct >= 0 ? '+' : ''}
             {outcome.valPct.toLocaleString('cs-CZ')} %
           </div>
+          <div className="particles" aria-hidden>
+            {Array.from({ length: 14 }).map((_, i) => (
+              <span
+                key={i}
+                className={outcome.valPct >= 0 ? 'p p-up' : 'p p-down'}
+                style={{
+                  left: `${(i * 37 + 11) % 100}%`,
+                  animationDelay: `${(i % 7) * 90}ms`,
+                  background:
+                    outcome.valPct >= 0
+                      ? i % 3 === 0
+                        ? 'var(--yellow)'
+                        : 'var(--green)'
+                      : i % 3 === 0
+                        ? '#8a8a94'
+                        : 'var(--red)',
+                }}
+              />
+            ))}
+          </div>
           <div className="card-paper">
             <p className="card-text">{outcome.resultText}</p>
             {outcome.burnout && (
@@ -195,7 +236,35 @@ export function Game({
 
       {phase === 'end' && (
         <main className="card">
+          {state.won && (
+            <div className="confetti" aria-hidden>
+              {Array.from({ length: 36 }).map((_, i) => (
+                <span
+                  key={i}
+                  className="c"
+                  style={{
+                    left: `${(i * 29 + 7) % 100}%`,
+                    animationDelay: `${(i * 137) % 2600}ms`,
+                    animationDuration: `${2200 + ((i * 53) % 1400)}ms`,
+                    background: ['var(--yellow)', 'var(--green)', '#64dd6c', '#3b2cff', 'var(--red)', '#fff'][
+                      i % 6
+                    ],
+                  }}
+                />
+              ))}
+            </div>
+          )}
           <div className={`card-icon ${state.won ? 'icon-gold' : ''}`}>
+            {state.won && (
+              <>
+                <div className="sparkle sparkle-1">
+                  <Sprite map={SPRITES.star} palette={pal} px={3} />
+                </div>
+                <div className="sparkle sparkle-2">
+                  <Sprite map={SPRITES.star} palette={pal} px={2} />
+                </div>
+              </>
+            )}
             <Sprite
               map={state.won ? SPRITES.unicorn : state.alive ? SPRITES.trophy : SPRITES.skull}
               palette={pal}
