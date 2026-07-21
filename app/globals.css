@@ -97,8 +97,20 @@ h1.logo {
   text-align: center;
   color: #fff;
   text-shadow: 3px 3px 0 var(--ink);
-  margin: 28px 0 4px;
+  margin: 6px 0 4px;
   letter-spacing: 1px;
+}
+
+.logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+  font-family: var(--font-pixel), monospace;
+  font-size: 19px;
+  color: #fff;
+  text-shadow: 3px 3px 0 var(--ink);
 }
 
 .tagline {
@@ -131,7 +143,9 @@ h1.logo {
 }
 
 .btn-primary {
-  background: var(--yellow);
+  background: #3b2cff; /* VITAR Group indigo */
+  color: #fff;
+  border-color: #7a6fff #1d12a8 #1d12a8 #7a6fff;
 }
 
 .menu {

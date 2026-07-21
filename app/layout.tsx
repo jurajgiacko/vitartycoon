@@ -17,9 +17,9 @@ const body = VT323({
 })
 
 export const metadata: Metadata = {
-  title: 'VITAR TYCOON — Cesta k 10 miliardám',
+  title: 'VITAR GROUP TYCOON — Cesta k 10 miliardám',
   description:
-    'Rok v křesle šéfa Vitaru. 12 měsíců, 12 rozhodnutí. Dotáhneš firmu na 10 miliard?',
+    'Rok v křesle šéfa VITAR Group. 12 měsíců, 12 rozhodnutí. Dotáhneš firmu na 10 miliard?',
 }
 
 export const viewport: Viewport = {

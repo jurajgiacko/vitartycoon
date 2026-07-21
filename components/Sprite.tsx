@@ -60,9 +60,30 @@ export const PALETTES: Record<string, Record<string, string>> = {
     S: '#c9c9c9',
     D: '#5a5a66',
   },
+  // barvy z brand manuálu VITAR Group
+  brand: {
+    G: '#64dd6c',
+    H: '#23a24c',
+  },
 }
 
 export const SPRITES: Record<string, string[]> = {
+  // pixel verze hvězdičky z loga VITAR Group (čtyři diagonální lístky)
+  asterisk: [
+    '..GG......GG..',
+    '.GGGG....GGGG.',
+    '.GGGGG..GGGGG.',
+    '..GGGGGGGGGG..',
+    '...GGGGGGGG...',
+    '....GGGGGG....',
+    '.....GGGG.....',
+    '....HHHHHH....',
+    '...HHHHHHHH...',
+    '..HHHHHHHHHH..',
+    '.HHHHH..HHHHH.',
+    '.HHHH....HHHH.',
+    '..HH......HH..',
+  ],
   pill: [
     '...KKKK...',
     '..KWWWWK..',

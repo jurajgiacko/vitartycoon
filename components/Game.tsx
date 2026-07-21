@@ -108,8 +108,8 @@ export function Game({
     sfx.click()
     const name = playerName ? `${playerName} dotáhl(a)` : 'Dotáhl(a) jsem'
     const text = state.won
-      ? `${name} VITAR na ${fmtMoney(state.valuation)} — JEDNOROŽEC! 🦄 Zvládneš to taky?`
-      : `${name} VITAR na ${fmtMoney(state.valuation)}. Zvládneš 10 miliard?`
+      ? `${name} VITAR Group na ${fmtMoney(state.valuation)} — JEDNOROŽEC! 🦄 Zvládneš to taky?`
+      : `${name} VITAR Group na ${fmtMoney(state.valuation)}. Zvládneš 10 miliard?`
     const url = typeof window !== 'undefined' ? window.location.origin : ''
     try {
       if (navigator.share) await navigator.share({ text: `${text} ${url}` })
@@ -207,7 +207,7 @@ export function Game({
               <>
                 <p className="card-title">VYHRÁLI JSTE!</p>
                 <p className="card-text">
-                  Vitar má hodnotu {fmtMoney(state.valuation)}! Deset miliard pokořeno —
+                  VITAR Group má hodnotu {fmtMoney(state.valuation)}! Deset miliard pokořeno —
                   JEDNOROŽEC ZE ZLÍNA, BABY!
                 </p>
               </>

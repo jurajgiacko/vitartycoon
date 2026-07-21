@@ -26,16 +26,18 @@ export default function Menu() {
 
   return (
     <div className="wrap">
-      <div style={{ alignSelf: 'center', marginTop: 30 }}>
-        <Sprite map={SPRITES.pill} palette={PALETTES.default} px={7} />
+      <div className="logo-row">
+        <span>VITAR</span>
+        <Sprite map={SPRITES.asterisk} palette={PALETTES.brand} px={3} />
+        <span>GROUP</span>
       </div>
-      <h1 className="logo">VITAR TYCOON</h1>
+      <h1 className="logo">TYCOON</h1>
       <p className="tagline">Cesta k 10 miliardám</p>
 
       <div className="card-paper" style={{ marginBottom: 20 }}>
         <p className="card-text">
-          Rok v křesle šéfa. 12 měsíců, 12 rozhodnutí. Start: firma za 1 mld Kč. Cíl: 10 mld Kč.
-          A hlavně — nezničit náladu týmu.
+          Rok v křesle šéfa VITAR Group. 12 měsíců, 12 rozhodnutí. Start: firma za 1 mld Kč. Cíl:
+          10 mld Kč. A hlavně — nezničit náladu týmu.
         </p>
       </div>
 

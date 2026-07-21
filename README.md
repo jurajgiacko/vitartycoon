@@ -1,6 +1,6 @@
-# VITAR TYCOON — Cesta k 10 miliardám
+# VITAR GROUP TYCOON — Cesta k 10 miliardám
 
-Pixel-art rozhodovací hra ve stylu „Unicorn Startup Simulator“. Rok v křesle šéfa Vitaru:
+Pixel-art rozhodovací hra ve stylu „Unicorn Startup Simulator“. Rok v křesle šéfa VITAR Group:
 12 měsíců, 12 rozhodnutí. Start 1 mld Kč, cíl **10 mld Kč** — a nezničit náladu týmu.
 
 ## Režimy

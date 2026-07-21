@@ -47,7 +47,7 @@ export default function Board() {
     <div className="board">
       <div className="center">
         <h1 className="logo" style={{ fontSize: 22 }}>
-          VITAR TYCOON — TURNAJ
+          VITAR GROUP TYCOON — TURNAJ
         </h1>
         <div className="board-code">{code}</div>
         <p className="board-join">
