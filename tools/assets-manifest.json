@@ -2,51 +2,283 @@
   "styleAnchor": "Detailed 16-bit pixel art illustration, SNES-era adventure game cutscene style, chunky visible pixels, clean dark outlines, soft pixel dithering shading, vibrant warm palette with sunny yellows, brick reds and fresh greens, flat light cream background, single centered scene, charming funny corporate-life mood",
   "negativePrompt": "no text, no letters, no numbers, no watermark, no logos, no photorealism, no 3D render, no blur, no smooth vector shapes, no anti-aliasing",
   "assets": [
-    { "id": "hero", "category": "ui", "aspect": "4:3", "prompt": "Proud white unicorn mascot with black pixel sunglasses and pink mane, wearing a business suit and green tie, holding an orange effervescent vitamin tube like a briefcase, standing in front of red-brick Bata-style functionalist factory skyline with one tall skyscraper, sunny sky with pixel clouds" },
-    { "id": "win", "category": "endings", "aspect": "1:1", "prompt": "Triumphant white unicorn with black sunglasses, pink mane and green collar rearing on an office rooftop at golden sunset, golden confetti raining, red-brick functionalist skyscraper skyline behind, celebration fireworks" },
-    { "id": "flat", "category": "endings", "aspect": "1:1", "prompt": "Office manager shrugging with a modest small golden trophy at a desk, small office party with a few balloons and half-hearted confetti, colleagues politely clapping, bittersweet cozy mood" },
-    { "id": "lose", "category": "endings", "aspect": "1:1", "prompt": "Empty dark office at night with overturned chairs and papers flying, one glowing computer screen left on, a skull-shaped coffee mug on the desk, moonlight through the window, dramatic gloomy mood" },
-
-    { "id": "flu", "category": "events", "aspect": "4:3", "prompt": "Pharmacy interior during flu season, shelves of orange vitamin tubes nearly empty, crowd of sneezing bundled-up customers with red noses reaching for the last effervescent vitamin tube" },
-    { "id": "tiktok", "category": "events", "aspect": "4:3", "prompt": "Young influencer filming herself with a ring light and smartphone on tripod, holding a small orange energy tablet box, floating pixel hearts and like symbols around her" },
-    { "id": "chain", "category": "events", "aspect": "4:3", "prompt": "Stern retail chain buyer in a suit sliding a thick contract across a negotiating table, wall of drugstore shelves behind him, tense staring contest with a nervous salesman" },
-    { "id": "gummies", "category": "events", "aspect": "4:3", "prompt": "Laboratory scientist in white coat proudly holding a tray of glossy pink gummy bears, bubbling flasks and beakers around, sparkles over the tray" },
-    { "id": "headhunter", "category": "events", "aspect": "4:3", "prompt": "Sneaky recruiter in dark suit whispering into the ear of a flattered sales manager at an office desk, briefcase slightly open showing stacks of money" },
-    { "id": "eshop", "category": "events", "aspect": "4:3", "prompt": "Server room in chaos, one rack smoking with small flames, panicked IT worker running with fire extinguisher, red warning symbols floating above monitors" },
-    { "id": "balkan", "category": "events", "aspect": "4:3", "prompt": "Delivery truck loaded with vitamin boxes driving a winding mountain road toward sunny Balkan hills and a distant town with red roofs" },
-    { "id": "eu", "category": "events", "aspect": "4:3", "prompt": "Bureaucrat with blue sash and circle-of-stars badge stamping a tall stack of papers, conveyor of product boxes waiting behind a rope barrier" },
-    { "id": "pricewar", "category": "events", "aspect": "4:3", "prompt": "Two rival shopkeepers fencing with giant price tags like swords in a supermarket aisle, vitamin boxes flying, dramatic duel poses" },
-    { "id": "teambuilding", "category": "events", "aspect": "4:3", "prompt": "Happy office team around a campfire in the mountains at dusk, one playing guitar, wooden cabin and small wellness pool steaming in the background" },
-    { "id": "grant", "category": "events", "aspect": "4:3", "prompt": "Office worker buried up to the chest in a mountain of paperwork, golden coins raining from above, one hand triumphantly holding a stamped page" },
-    { "id": "xmas", "category": "events", "aspect": "4:3", "prompt": "Snowy highway at dusk with a large billboard showing a gift box and an orange vitamin tube, passing cars with glowing headlights, Christmas lights" },
-    { "id": "machine", "category": "events", "aspect": "4:3", "prompt": "Broken factory production line with smoke puffs, stopped conveyor of orange vitamin tubes, worker in overalls scratching head with a wrench" },
-    { "id": "pharma", "category": "events", "aspect": "4:3", "prompt": "Pharmacist behind a counter listening to an enthusiastic sales rep presenting vitamin products, shelves of medicine jars behind, projector screen with a chart" },
-    { "id": "amazon", "category": "events", "aspect": "4:3", "prompt": "Giant logistics warehouse interior with conveyor belts full of parcels, a small delivery van entering an enormous gate, black-red-gold bunting" },
-    { "id": "cleanlabel", "category": "events", "aspect": "4:3", "prompt": "Customer with a magnifying glass reading the ingredients of a product box in a supermarket aisle, floating green leaves, other shoppers nodding approvingly" },
-    { "id": "coffee", "category": "events", "aspect": "4:3", "prompt": "Office kitchen with a broken coffee machine puffing steam, queue of sad employees with empty mugs, broken air conditioner dripping in the corner" },
-    { "id": "hockey", "category": "events", "aspect": "4:3", "prompt": "Ice hockey arena during a match, two players clashing at the boards, cheering pixel crowd, advertising boards along the rink left blank" },
-    { "id": "press", "category": "events", "aspect": "4:3", "prompt": "Journalist with press hat and notepad interviewing a sweating nervous manager at a factory gate, camera flashes going off" },
-    { "id": "ai", "category": "events", "aspect": "4:3", "prompt": "Friendly boxy robot working at an office desk among human colleagues, half of them excited, half worried, screens with rising charts behind" },
-    { "id": "retro", "category": "events", "aspect": "4:3", "prompt": "Dusty warehouse shelf with an old glowing 90s-style recipe notebook, amazed warehouse worker holding a lantern, retro sparkles and cobwebs" },
-    { "id": "warehouse", "category": "events", "aspect": "4:3", "prompt": "Two warehouses side by side, workers carrying boxes walking from the small old one toward a huge shiny new one, sad manager watching from the doorway" },
-    { "id": "fair", "category": "events", "aspect": "4:3", "prompt": "Busy trade fair hall with exhibition booths and colorful banners, businesspeople shaking hands, table displays of vitamin tubes and boxes" },
-    { "id": "app", "category": "events", "aspect": "4:3", "prompt": "Giant smartphone standing upright showing a health app interface with hearts and pill icons, tiny developers on ladders building it with wrenches" },
-    { "id": "whitelabel", "category": "events", "aspect": "4:3", "prompt": "Factory line producing rows of identical plain white unmarked product boxes, foreign businessman in suit inspecting them with a clipboard and monocle" },
-    { "id": "whitelabel2", "category": "events", "aspect": "4:3", "prompt": "Handshake over a contract between a manager and a pharmacist, a large golden key lying on the table between them, white-and-red bunting" },
-    { "id": "d2c", "category": "events", "aspect": "4:3", "prompt": "Cozy e-commerce office where parcels with little hearts fly out of a laptop screen straight to doorsteps of happy customers in tiny houses" },
-    { "id": "allegro", "category": "events", "aspect": "4:3", "prompt": "Online marketplace imagined as a bustling bazaar with market stalls of health products inside a giant browser window frame, white-and-red bunting" },
-    { "id": "caprisun", "category": "events", "aspect": "4:3", "prompt": "Kids on a sunny playground joyfully drinking from shiny silver juice pouches with straws, one kid doing a happy jump" },
-    { "id": "predator", "category": "events", "aspect": "4:3", "prompt": "Swarm of cartoon mosquitoes attacking a vineyard picnic, hero standing on the table spraying a protective glowing cloud from a spray can" },
-    { "id": "award", "category": "events", "aspect": "4:3", "prompt": "Golden trophy on a podium under a spotlight, cheering marketing team throwing confetti, red curtain background" },
-    { "id": "vyprostovak", "category": "events", "aspect": "4:3", "prompt": "Morning after a new year party, person on a couch reaching desperately for a glowing glass of fizzy effervescent drink on the table, party debris around" },
-
-    { "id": "fu_crunch", "category": "events", "aspect": "4:3", "prompt": "Three factory workers with packed cardboard boxes walking out of the factory door into sunset, manager facepalming in the doorway" },
-    { "id": "fu_eshop_patch", "category": "events", "aspect": "4:3", "prompt": "Server rack covered in duct tape finally bursting with sparks, computer screen showing a pixel skull, angry one-star rating symbols raining down" },
-    { "id": "fu_eshop_rebuild", "category": "events", "aspect": "4:3", "prompt": "Shiny new computer setup with a small rocket launching from the screen leaving a rainbow pixel trail, sales chart arrow pointing steeply up, team celebrating" },
-    { "id": "fu_balkan", "category": "events", "aspect": "4:3", "prompt": "Worried manager on the phone at a desk with an empty money bag and a tall stack of unpaid invoices, mountain road visible through the window" },
-    { "id": "fu_wl_full", "category": "events", "aspect": "4:3", "prompt": "Factory bursting at the seams, conveyor overloaded with plain white boxes piling to the ceiling, meanwhile an empty branded shop shelf in the corner" },
-    { "id": "fu_wl_exclusive", "category": "events", "aspect": "4:3", "prompt": "Businessman knocking on a locked glass door with a giant golden padlock, a key hanging inside just out of reach, red-and-white ribbon on the key" },
-    { "id": "fu_caprisun_keep", "category": "events", "aspect": "4:3", "prompt": "Summer beach kiosk selling shiny silver juice pouches, long queue of happy kids with sunglasses, sun blazing, sales chart drawn in the sand pointing up" },
-    { "id": "fu_caprisun_drop", "category": "events", "aspect": "4:3", "prompt": "Sad orange fizzy-drink mascot standing alone on a supermarket shelf while kids point excitedly at a TV showing a rival shiny drink, dramatic spotlight" }
+    {
+      "id": "hero",
+      "category": "ui",
+      "aspect": "4:3",
+      "prompt": "Proud white unicorn mascot with black pixel sunglasses and pink mane, wearing a business suit and green tie, holding an orange effervescent vitamin tube like a briefcase, standing in front of red-brick Bata-style functionalist factory skyline with one tall skyscraper, sunny sky with pixel clouds"
+    },
+    {
+      "id": "logo-flower",
+      "category": "ui",
+      "aspect": "1:1",
+      "style": "Crisp 16-bit pixel art icon, chunky visible pixels, thick dark outline, flat colors, centered single object filling most of the frame, the entire background is one perfectly uniform flat solid pure magenta color #FF00FF, no shadow, no gradient, no dithering",
+      "prompt": "Simple flower logo mark with exactly five rounded organic petals arranged around a small center, fresh spring green petals with slightly darker green shading, friendly and modern"
+    },
+    {
+      "id": "skyline",
+      "category": "ui",
+      "aspect": "21:9",
+      "style": "Crisp 16-bit pixel art, chunky visible pixels, clean dark outlines, flat warm colors. The entire sky is one perfectly uniform flat solid light periwinkle blue color #7AA6DC — no clouds, no dithering, no texture, no gradient, nothing in the sky at all. Buildings occupy only the bottom half. The composition begins and ends with a short stretch of empty sky at the left and right edges so the strip can tile",
+      "prompt": "Wide panorama of Zlin Bata functionalist architecture: row of red-brick factory buildings with concrete grid frames and large yellow-lit windows, one tall slender brick skyscraper with clock, one factory chimney without smoke, flat rooflines"
+    },
+    {
+      "id": "win",
+      "category": "endings",
+      "aspect": "1:1",
+      "prompt": "Triumphant white unicorn with black sunglasses, pink mane and green collar rearing on an office rooftop at golden sunset, golden confetti raining, red-brick functionalist skyscraper skyline behind, celebration fireworks"
+    },
+    {
+      "id": "flat",
+      "category": "endings",
+      "aspect": "1:1",
+      "prompt": "Office manager shrugging with a modest small golden trophy at a desk, small office party with a few balloons and half-hearted confetti, colleagues politely clapping, bittersweet cozy mood"
+    },
+    {
+      "id": "lose",
+      "category": "endings",
+      "aspect": "1:1",
+      "prompt": "Empty dark office at night with overturned chairs and papers flying, one glowing computer screen left on, a skull-shaped coffee mug on the desk, moonlight through the window, dramatic gloomy mood"
+    },
+    {
+      "id": "flu",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Pharmacy interior during flu season, shelves of orange vitamin tubes nearly empty, crowd of sneezing bundled-up customers with red noses reaching for the last effervescent vitamin tube"
+    },
+    {
+      "id": "tiktok",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Young influencer filming herself with a ring light and smartphone on tripod, holding a small orange energy tablet box, floating pixel hearts and like symbols around her"
+    },
+    {
+      "id": "chain",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Stern retail chain buyer in a suit sliding a thick contract across a negotiating table, wall of drugstore shelves behind him, tense staring contest with a nervous salesman"
+    },
+    {
+      "id": "gummies",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Laboratory scientist in white coat proudly holding a tray of glossy pink gummy bears, bubbling flasks and beakers around, sparkles over the tray"
+    },
+    {
+      "id": "headhunter",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Sneaky recruiter in dark suit whispering into the ear of a flattered sales manager at an office desk, briefcase slightly open showing stacks of money"
+    },
+    {
+      "id": "eshop",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Server room in chaos, one rack smoking with small flames, panicked IT worker running with fire extinguisher, red warning symbols floating above monitors"
+    },
+    {
+      "id": "balkan",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Delivery truck loaded with vitamin boxes driving a winding mountain road toward sunny Balkan hills and a distant town with red roofs"
+    },
+    {
+      "id": "eu",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Bureaucrat with blue sash and circle-of-stars badge stamping a tall stack of papers, conveyor of product boxes waiting behind a rope barrier"
+    },
+    {
+      "id": "pricewar",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Two rival shopkeepers fencing with giant price tags like swords in a supermarket aisle, vitamin boxes flying, dramatic duel poses"
+    },
+    {
+      "id": "teambuilding",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Happy office team around a campfire in the mountains at dusk, one playing guitar, wooden cabin and small wellness pool steaming in the background"
+    },
+    {
+      "id": "grant",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Office worker buried up to the chest in a mountain of paperwork, golden coins raining from above, one hand triumphantly holding a stamped page"
+    },
+    {
+      "id": "xmas",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Snowy highway at dusk with a large billboard showing a gift box and an orange vitamin tube, passing cars with glowing headlights, Christmas lights"
+    },
+    {
+      "id": "machine",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Broken factory production line with smoke puffs, stopped conveyor of orange vitamin tubes, worker in overalls scratching head with a wrench"
+    },
+    {
+      "id": "pharma",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Pharmacist behind a counter listening to an enthusiastic sales rep presenting vitamin products, shelves of medicine jars behind, projector screen with a chart"
+    },
+    {
+      "id": "amazon",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Giant logistics warehouse interior with conveyor belts full of parcels, a small delivery van entering an enormous gate, black-red-gold bunting"
+    },
+    {
+      "id": "cleanlabel",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Customer with a magnifying glass reading the ingredients of a product box in a supermarket aisle, floating green leaves, other shoppers nodding approvingly"
+    },
+    {
+      "id": "coffee",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Office kitchen with a broken coffee machine puffing steam, queue of sad employees with empty mugs, broken air conditioner dripping in the corner"
+    },
+    {
+      "id": "hockey",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Ice hockey arena during a match, two players clashing at the boards, cheering pixel crowd, advertising boards along the rink left blank"
+    },
+    {
+      "id": "press",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Journalist with press hat and notepad interviewing a sweating nervous manager at a factory gate, camera flashes going off"
+    },
+    {
+      "id": "ai",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Friendly boxy robot working at an office desk among human colleagues, half of them excited, half worried, screens with rising charts behind"
+    },
+    {
+      "id": "retro",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Dusty warehouse shelf with an old glowing 90s-style recipe notebook, amazed warehouse worker holding a lantern, retro sparkles and cobwebs"
+    },
+    {
+      "id": "warehouse",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Two warehouses side by side, workers carrying boxes walking from the small old one toward a huge shiny new one, sad manager watching from the doorway"
+    },
+    {
+      "id": "fair",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Busy trade fair hall with exhibition booths and colorful banners, businesspeople shaking hands, table displays of vitamin tubes and boxes"
+    },
+    {
+      "id": "app",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Giant smartphone standing upright showing a health app interface with hearts and pill icons, tiny developers on ladders building it with wrenches"
+    },
+    {
+      "id": "whitelabel",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Factory line producing rows of identical plain white unmarked product boxes, foreign businessman in suit inspecting them with a clipboard and monocle"
+    },
+    {
+      "id": "whitelabel2",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Handshake over a contract between a manager and a pharmacist, a large golden key lying on the table between them, white-and-red bunting"
+    },
+    {
+      "id": "d2c",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Cozy e-commerce office where parcels with little hearts fly out of a laptop screen straight to doorsteps of happy customers in tiny houses"
+    },
+    {
+      "id": "allegro",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Online marketplace imagined as a bustling bazaar with market stalls of health products inside a giant browser window frame, white-and-red bunting"
+    },
+    {
+      "id": "caprisun",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Kids on a sunny playground joyfully drinking from shiny silver juice pouches with straws, one kid doing a happy jump"
+    },
+    {
+      "id": "predator",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Swarm of cartoon mosquitoes attacking a vineyard picnic, hero standing on the table spraying a protective glowing cloud from a spray can"
+    },
+    {
+      "id": "award",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Golden trophy on a podium under a spotlight, cheering marketing team throwing confetti, red curtain background"
+    },
+    {
+      "id": "vyprostovak",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Morning after a new year party, person on a couch reaching desperately for a glowing glass of fizzy effervescent drink on the table, party debris around"
+    },
+    {
+      "id": "fu_crunch",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Three factory workers with packed cardboard boxes walking out of the factory door into sunset, manager facepalming in the doorway"
+    },
+    {
+      "id": "fu_eshop_patch",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Server rack covered in duct tape finally bursting with sparks, computer screen showing a pixel skull, angry one-star rating symbols raining down"
+    },
+    {
+      "id": "fu_eshop_rebuild",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Shiny new computer setup with a small rocket launching from the screen leaving a rainbow pixel trail, sales chart arrow pointing steeply up, team celebrating"
+    },
+    {
+      "id": "fu_balkan",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Worried manager on the phone at a desk with an empty money bag and a tall stack of unpaid invoices, mountain road visible through the window"
+    },
+    {
+      "id": "fu_wl_full",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Factory bursting at the seams, conveyor overloaded with plain white boxes piling to the ceiling, meanwhile an empty branded shop shelf in the corner"
+    },
+    {
+      "id": "fu_wl_exclusive",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Businessman knocking on a locked glass door with a giant golden padlock, a key hanging inside just out of reach, red-and-white ribbon on the key"
+    },
+    {
+      "id": "fu_caprisun_keep",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Summer beach kiosk selling shiny silver juice pouches, long queue of happy kids with sunglasses, sun blazing, sales chart drawn in the sand pointing up"
+    },
+    {
+      "id": "fu_caprisun_drop",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Sad orange fizzy-drink mascot standing alone on a supermarket shelf while kids point excitedly at a TV showing a rival shiny drink, dramatic spotlight"
+    }
   ]
 }

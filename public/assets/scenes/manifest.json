@@ -9,6 +9,20 @@
       "prompt": "Proud white unicorn mascot with black pixel sunglasses and pink mane, wearing a business suit and green tie, holding an orange effervescent vitamin tube like a briefcase, standing in front of red-brick Bata-style functionalist factory skyline with one tall skyscraper, sunny sky with pixel clouds"
     },
     {
+      "id": "logo-flower",
+      "category": "ui",
+      "aspect": "1:1",
+      "style": "Crisp 16-bit pixel art icon, chunky visible pixels, thick dark outline, flat colors, centered single object filling most of the frame, the entire background is one perfectly uniform flat solid pure magenta color #FF00FF, no shadow, no gradient, no dithering",
+      "prompt": "Simple flower logo mark with exactly five rounded organic petals arranged around a small center, fresh spring green petals with slightly darker green shading, friendly and modern"
+    },
+    {
+      "id": "skyline",
+      "category": "ui",
+      "aspect": "21:9",
+      "style": "Crisp 16-bit pixel art, chunky visible pixels, clean dark outlines, flat warm colors. The entire sky is one perfectly uniform flat solid light periwinkle blue color #7AA6DC — no clouds, no dithering, no texture, no gradient, nothing in the sky at all. Buildings occupy only the bottom half. The composition begins and ends with a short stretch of empty sky at the left and right edges so the strip can tile",
+      "prompt": "Wide panorama of Zlin Bata functionalist architecture: row of red-brick factory buildings with concrete grid frames and large yellow-lit windows, one tall slender brick skyscraper with clock, one factory chimney without smoke, flat rooflines"
+    },
+    {
       "id": "win",
       "category": "endings",
       "aspect": "1:1",

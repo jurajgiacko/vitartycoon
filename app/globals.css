@@ -5,8 +5,8 @@
 }
 
 :root {
-  --sky-1: #86b3e8;
-  --sky-2: #6f9fd8;
+  --sky-1: #bcd3f2;
+  --sky-2: #9bb7e5; /* přesně barva oblohy ve skyline.png */
   --panel: #43434d;
   --panel-dark: #34343c;
   --paper: #f0efe8;
@@ -26,7 +26,7 @@ body {
 
 body {
   font-family: var(--font-body), monospace;
-  background: linear-gradient(var(--sky-1), var(--sky-2));
+  background: linear-gradient(var(--sky-1), var(--sky-2) 35%);
   color: var(--ink);
   overflow-x: hidden;
   min-height: 100dvh;
@@ -67,11 +67,23 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 84px;
+  height: 270px;
   z-index: -1;
   pointer-events: none;
-  display: flex;
-  overflow: hidden;
+  background: url('/assets/scenes/ui/skyline.png') repeat-x bottom center / auto 100%;
+  image-rendering: pixelated;
+}
+
+@media (max-width: 540px) {
+  .skyline {
+    height: 190px;
+  }
+}
+
+.logo-flower {
+  height: 46px;
+  width: auto;
+  image-rendering: pixelated;
 }
 
 .sun {

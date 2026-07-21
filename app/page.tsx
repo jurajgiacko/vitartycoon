@@ -1,11 +1,10 @@
 import Link from 'next/link'
-import { Sprite, SPRITES, PALETTES } from '@/components/Sprite'
 
 export default function Menu() {
   return (
     <div className="wrap">
       <div className="logo-row">
-        <Sprite map={SPRITES.asterisk} palette={PALETTES.brand} px={3} />
+        <img className="logo-flower" src="/assets/scenes/ui/logo-flower.png" alt="" />
         <span>VITAR</span>
         <span>GROUP</span>
       </div>

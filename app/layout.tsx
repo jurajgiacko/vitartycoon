@@ -48,11 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Sprite map={SPRITES.bird} palette={PALETTES.bird} px={2} />
           </div>
         </div>
-        <div className="skyline">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <Sprite key={i} map={SPRITES.skyline} palette={PALETTES.skyline} px={6} />
-          ))}
-        </div>
+        <div className="skyline" />
         {children}
       </body>
     </html>
