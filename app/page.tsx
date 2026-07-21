@@ -4,7 +4,6 @@ export default function Menu() {
   return (
     <div className="wrap">
       <div className="logo-row">
-        <img className="logo-flower" src="/assets/scenes/ui/logo-flower.png" alt="" />
         <span>VITAR</span>
         <span>GROUP</span>
       </div>
