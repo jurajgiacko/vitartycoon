@@ -22,6 +22,20 @@ npx vercel
 
 Žádná konfigurace ani databáze — čistě statická/klientská hra.
 
+## Grafika
+
+Ilustrace (události, konce, hero) generuje Gemini „nano banana“
+(gemini-2.5-flash-image) — prompty a styl v [tools/assets-manifest.json](tools/assets-manifest.json):
+
+```bash
+GEMINI_API_KEY=xxx node tools/generate-assets.mjs            # dogeneruje chybějící
+GEMINI_API_KEY=xxx node tools/generate-assets.mjs --force    # přegeneruje vše
+GEMINI_API_KEY=xxx node tools/generate-assets.mjs --only=flu,win
+```
+
+Po vygenerování zmenšit: `sips -Z 640 public/assets/scenes/events/*.png`.
+Hotové PNG jsou v repu — bez klíče se hra normálně buildí i hraje.
+
 ## Ladění obsahu
 
 - Události, volby, dopady a navazující události (`FOLLOWUPS`): [lib/events.ts](lib/events.ts)

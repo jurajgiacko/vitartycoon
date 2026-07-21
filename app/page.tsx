@@ -12,6 +12,8 @@ export default function Menu() {
       <h1 className="logo">TYCOON</h1>
       <p className="tagline">Cesta k 10 miliardám</p>
 
+      <img className="hero-art" src="/assets/scenes/ui/hero.png" alt="Jednorožec ze Zlína" />
+
       <div className="card-paper" style={{ marginBottom: 20 }}>
         <p className="card-text">
           Rok v křesle šéfa VITAR Group. 12 měsíců, 12 rozhodnutí. Start: firma za 1 mld Kč. Cíl:

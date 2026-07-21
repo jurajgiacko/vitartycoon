@@ -154,9 +154,7 @@ export function Game({ seed, onRestart }: { seed: string; onRestart?: () => void
             {MONTHS[state.month]} · {state.month + 1}/12
           </div>
           {ev.followup && <div className="card-followup">! Důsledek vašeho rozhodnutí !</div>}
-          <div className="card-icon">
-            <Sprite map={SPRITES[ev.icon] ?? SPRITES.star} palette={pal} px={7} />
-          </div>
+          <img className="card-art" src={`/assets/scenes/events/${ev.id}.png`} alt="" />
           <div className="card-paper">
             <p className="card-text">{ev.text}</p>
           </div>
@@ -238,7 +236,7 @@ export function Game({ seed, onRestart }: { seed: string; onRestart?: () => void
               ))}
             </div>
           )}
-          <div className={`card-icon ${state.won ? 'icon-gold' : ''}`}>
+          <div className="card-art-wrap">
             {state.won && (
               <>
                 <div className="sparkle sparkle-1">
@@ -249,10 +247,10 @@ export function Game({ seed, onRestart }: { seed: string; onRestart?: () => void
                 </div>
               </>
             )}
-            <Sprite
-              map={state.won ? SPRITES.unicorn : state.alive ? SPRITES.trophy : SPRITES.skull}
-              palette={pal}
-              px={state.won ? 8 : 9}
+            <img
+              className="card-art"
+              src={`/assets/scenes/endings/${state.won ? 'win' : state.alive ? 'flat' : 'lose'}.png`}
+              alt=""
             />
           </div>
           <div className="card-paper">
