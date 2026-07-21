@@ -5,8 +5,8 @@ export default function Menu() {
   return (
     <div className="wrap">
       <div className="logo-row">
-        <span>VITAR</span>
         <Sprite map={SPRITES.asterisk} palette={PALETTES.brand} px={3} />
+        <span>VITAR</span>
         <span>GROUP</span>
       </div>
       <h1 className="logo">TYCOON</h1>

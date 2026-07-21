@@ -79,21 +79,23 @@ export const PALETTES: Record<string, Record<string, string>> = {
 }
 
 export const SPRITES: Record<string, string[]> = {
-  // pixel verze hvězdičky z loga VITAR Group (čtyři diagonální lístky)
+  // pixel verze kvítku z loga VITAR Group (pět lístků)
   asterisk: [
-    '..GG......GG..',
-    '.GGGG....GGGG.',
-    '.GGGGG..GGGGG.',
-    '..GGGGGGGGGG..',
-    '...GGGGGGGG...',
-    '....GGGGGG....',
-    '.....GGGG.....',
-    '....HHHHHH....',
-    '...HHHHHHHH...',
-    '..HHHHHHHHHH..',
-    '.HHHHH..HHHHH.',
-    '.HHHH....HHHH.',
-    '..HH......HH..',
+    '......GGGG......',
+    '.....GGGGGG.....',
+    '.....GGGGGG.....',
+    '.GG..GGGGGG..GG.',
+    'GGGG.GGGGGG.GGGG',
+    'GGGGG.GGGG.GGGGG',
+    'GGGGGG.GG.GGGGGG',
+    '.GGGGGGGGGGGGGG.',
+    '..GGGGGGGGGGGG..',
+    '....GGGGGGGG....',
+    '...GGGG..GGGG...',
+    '..GGGGG..GGGGG..',
+    '..GGGGG..GGGGG..',
+    '..GGGG....GGGG..',
+    '...GG......GG...',
   ],
   sun: [
     '...YYYYYY...',
