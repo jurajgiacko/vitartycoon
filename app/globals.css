@@ -86,6 +86,11 @@ body {
   50% { transform: scale(1.04); }
 }
 
+/* na mobilu HUD zabírá celou šířku a slunce by zpod něj vykukovalo */
+@media (max-width: 540px) {
+  .sun { display: none; }
+}
+
 .bird {
   position: absolute;
   animation: fly linear infinite;
