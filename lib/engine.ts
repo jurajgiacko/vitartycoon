@@ -3,7 +3,7 @@ import { EVENTS, FOLLOWUPS, GameEvent } from './events'
 export const START_VALUATION = 1_000_000_000 // 1 mld Kč
 export const TARGET = 10_000_000_000 // 10 mld Kč
 export const START_HAPPINESS = 60
-export const GROWTH_BOOST = 1.3
+export const GROWTH_BOOST = 1.38
 
 export const MONTHS = [
   'Leden', 'Únor', 'Březen', 'Duben', 'Květen', 'Červen',
