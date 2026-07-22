@@ -24,7 +24,7 @@ export type GameState = {
   finished: boolean
   won: boolean
   currentEventId: string
-  baseIndex: number // kolik základních událostí už bylo použito
+  used: string[] // už použité základní události
   pending: { id: string; due: number }[] // naplánované navazující události
 }
 
@@ -61,7 +61,18 @@ export function eventSequence(seed: string): GameEvent[] {
   return pool
 }
 
+// další nepoužitá základní událost vhodná pro daný měsíc (sezónnost);
+// když žádná sezónně nesedí, vezme se první nepoužitá
+export function pickBaseEvent(seed: string, used: string[], month: number): GameEvent {
+  const pool = eventSequence(seed)
+  return (
+    pool.find((e) => !used.includes(e.id) && (!e.months || e.months.includes(month))) ??
+    pool.find((e) => !used.includes(e.id))!
+  )
+}
+
 export function newGame(seed: string): GameState {
+  const first = pickBaseEvent(seed, [], 0)
   return {
     month: 0,
     valuation: START_VALUATION,
@@ -69,8 +80,8 @@ export function newGame(seed: string): GameState {
     alive: true,
     finished: false,
     won: false,
-    currentEventId: eventSequence(seed)[0].id,
-    baseIndex: 1,
+    currentEventId: first.id,
+    used: [first.id],
     pending: [],
   }
 }
@@ -126,7 +137,7 @@ export function applyChoice(
 
   // určit událost dalšího měsíce: splatný followup má přednost před základním poolem
   let currentEventId = state.currentEventId
-  let baseIndex = state.baseIndex
+  const used = [...state.used]
   if (!finished) {
     pending.sort((a, b) => a.due - b.due)
     const dueIdx = pending.findIndex((p) => p.due <= nextMonth)
@@ -134,8 +145,9 @@ export function applyChoice(
       currentEventId = pending[dueIdx].id
       pending.splice(dueIdx, 1)
     } else {
-      currentEventId = eventSequence(seed)[baseIndex].id
-      baseIndex++
+      const next = pickBaseEvent(seed, used, nextMonth)
+      currentEventId = next.id
+      used.push(next.id)
     }
   }
 
@@ -151,7 +163,7 @@ export function applyChoice(
       finished,
       won,
       currentEventId,
-      baseIndex,
+      used,
       pending,
     },
     valPct: pct,

@@ -19,11 +19,14 @@ export type GameEvent = {
   text: string
   choices: Choice[]
   followup?: boolean // důsledek dřívějšího rozhodnutí (zobrazí se s výstrahou)
+  // sezónnost: povolené měsíce (0 = leden … 11 = prosinec); bez omezení = kdykoliv
+  months?: number[]
 }
 
 export const EVENTS: GameEvent[] = [
   {
     id: 'flu',
+    months: [0, 1, 2, 9, 10, 11],
     icon: 'virus',
     text: 'Chřipková sezóna! Celé Česko smrká a Maxi Vita Vitamin C mizí z regálů.',
     choices: [
@@ -123,6 +126,7 @@ export const EVENTS: GameEvent[] = [
   },
   {
     id: 'xmas',
+    months: [8, 9, 10],
     icon: 'tv',
     text: 'Blíží se vánoční sezóna. Agentura navrhla kampaň „Zdraví pod stromeček“.',
     choices: [
@@ -177,6 +181,7 @@ export const EVENTS: GameEvent[] = [
   },
   {
     id: 'hockey',
+    months: [0, 1, 2, 8, 9, 10, 11],
     icon: 'hockey',
     text: 'Hokejová extraliga hledá partnera. Logo na ledě, miliony diváků.',
     choices: [
@@ -267,6 +272,7 @@ export const EVENTS: GameEvent[] = [
   },
   {
     id: 'caprisun',
+    months: [1, 2, 3, 4],
     icon: 'pill',
     text: 'Licence Capri-Sun se prodlužuje. Licenční poplatky ale rostou o 30 %.',
     choices: [
@@ -276,6 +282,7 @@ export const EVENTS: GameEvent[] = [
   },
   {
     id: 'predator',
+    months: [4, 5, 6, 7],
     icon: 'virus',
     text: 'Komáří kalamita na jižní Moravě! Poptávka po repelentu Predator trhá rekordy.',
     choices: [
@@ -294,6 +301,7 @@ export const EVENTS: GameEvent[] = [
   },
   {
     id: 'vyprostovak',
+    months: [9, 10, 11],
     icon: 'pill',
     text: 'Blíží se večírková sezóna. Řetězce chtějí dvojnásobnou zásobu legendárního Vyprošťováku.',
     choices: [
